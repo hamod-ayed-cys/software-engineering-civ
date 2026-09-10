@@ -1,0 +1,20 @@
+name: Test Error Workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print a normal message
+        run: echo "هذه خطوة ناجحة وسيتم طباعة هذا النص."
+
+      - name: Intentionally cause an error
+        run: |
+          echo "سنقوم الآن بتنفيذ أمر خاطئ ليتوقف البناء وتظهر الأخطاء..."
+          exit 1
+          
